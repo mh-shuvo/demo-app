@@ -22,7 +22,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','about'],
                         'allow' => true,
                     ],
                     [
@@ -74,7 +74,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $this->layout = 'blank';
+        $this->layout = 'auth';
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
@@ -94,7 +94,9 @@ class SiteController extends Controller
      */
 
     public function actionAbout(){
-        return $this->render('about');
+        return $this->render('about',[
+                'title' => "About Use Page"
+            ]);
     }
 
     /**

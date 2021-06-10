@@ -4,4 +4,6 @@ protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
 themes/classic/views/
+frontend/web/storage
+backend/web/storage
 /vendor
