@@ -18,10 +18,6 @@ Date: 9/6/21 10:06:13
             [
                 'label' => 'Videos',
                 'url' => ['/video/index']
-            ],
-            [
-                'label' => 'Comments',
-                'url' => ['/comment/index']
             ]
         ]
     ]) ?>

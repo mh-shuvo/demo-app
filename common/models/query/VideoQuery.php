@@ -3,6 +3,7 @@
 namespace common\models\query;
 
 use common\models\Video;
+use common\models\VideoLike;
 
 /**
  * This is the ActiveQuery class for [[\common\models\Video]].
@@ -42,4 +43,10 @@ class VideoQuery extends \yii\db\ActiveQuery
     public function latest(){
         return  $this->orderBy(['created_at' => SORT_DESC]);
     }
+    public function byKeyword($keyword)
+    {
+        return $this->andWhere("MATCH(title, description, tags)
+        AGAINST (:keyword)", ['keyword' => $keyword]);
+    }
+
 }

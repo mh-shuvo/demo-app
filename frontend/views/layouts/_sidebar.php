@@ -13,7 +13,7 @@ Date: 9/6/21 10:06:13
         'items' => [
             [
                 'label' => 'Home',
-                'url' => ['/site/index']
+                'url' => ['/video/index']
             ],
             [
                 'label' => 'History',

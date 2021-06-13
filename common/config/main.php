@@ -10,5 +10,11 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'class' => 'Swift_SmtpTransport',
+        'host' => 'smtp.mailtrap.io',
+        'username' => 'a03a00dfa4520f',
+        'password' => '8da06a2aadaad3',
+        'port' => '2525',
     ],
+
 ];

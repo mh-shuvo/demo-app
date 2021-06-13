@@ -31,4 +31,20 @@ class VideoLikeQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+    public function liked()
+    {
+        return $this->andWhere(['type' => VideoLike::TYPE_LIKE]);
+    }
+
+    public function disliked()
+    {
+        return $this->andWhere(['type' => VideoLike::TYPE_DISLIKE]);
+    }
+    public function userIdVideoId($userId, $videoId)
+    {
+        return $this->andWhere([
+            'video_id' => $videoId,
+            'user_id' => $userId
+        ]);
+    }
 }

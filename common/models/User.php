@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use app\models\Subscriber;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -56,6 +57,24 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     * @throws \yii\base\InvalidConfigException
+     * @author Zura Sekhniashvili <zurasekhniashvili@gmail.com>
+     */
+    public function getSubscribers()
+    {
+        return $this->hasMany(User::class, ['id' => 'user_id'])
+            ->viaTable('subscriber', ['channel_id' => 'id']);
+    }
+
+    public function isSubscribed($userId)
+    {
+        return Subscriber::find()->andWhere([
+            'channel_id' => $this->id,
+            'user_id' => $userId
+        ])->one();
     }
 
     /**
