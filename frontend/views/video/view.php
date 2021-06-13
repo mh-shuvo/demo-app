@@ -43,6 +43,7 @@ $this->title = $model->title . ' | ' . Yii::$app->name;
             </p>
             <?php echo Html::encode($model->description) ?>
         </div>
+    </div>
     <div class="col-sm-4">
         <?php foreach ($similarVideos as $similarVideo): ?>
             <div class="media mb-3">
